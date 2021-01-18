@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Comment } from 'src/comments/entities/comment.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity('post')
 export class Post {
@@ -7,4 +8,10 @@ export class Post {
 
   @Column('varchar', { length: 5_000 })
   text: string;
+
+  @Column('varchar', { length: 100 })
+  username: string;
+
+  @OneToMany(() => Comment, (comment) => comment.post)
+  comments?: Comment[];
 }

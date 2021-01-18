@@ -4,6 +4,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Post } from './posts/entities/post.entity';
 import { PostsModule } from './posts/posts.module';
+import { CommentsModule } from './comments/comments.module';
+import { Comment } from './comments/entities/comment.entity';
 
 @Module({
   imports: [
@@ -14,10 +16,11 @@ import { PostsModule } from './posts/posts.module';
       username: 'postgres',
       password: 'mysecretpassword',
       database: 'admin_demo',
-      entities: [Post],
+      entities: [Post, Comment],
       synchronize: true,
     }),
     PostsModule,
+    CommentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

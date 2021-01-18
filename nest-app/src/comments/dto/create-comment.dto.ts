@@ -1,4 +1,4 @@
-export class CreatePostDto {
+export class CreateCommentDto {
   text: string;
   username: string;
 }
