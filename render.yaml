@@ -10,8 +10,8 @@ services:
   branch: master
   dockerfilePath: ./nest-app/Dockerfile
   dockerContext: ./nest-app
-  domains:
-    - api.coolapp.dev
+  # domains:
+  #   - api.coolapp.dev
   envVars:
   - key: PORT
     value: 4000
