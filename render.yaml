@@ -1,32 +1,6 @@
 previewsEnabled: true
 previewsExpireAfterDays: 1
 
-# services:
-# # production
-# - type: web
-#   name: coolapp-frontend-prod
-#   env: static
-#   branch: master
-#   buildCommand: cd client && yarn && yarn build
-#   staticPublishPath: ./client/build
-#   domains:
-#     - app.coolapp.com
-#   routes:
-#   - type: rewrite
-#     source: /*
-#     destination: /index.html
-#   headers:
-#   - path: /*
-#     name: X-Frame-Options
-#     value: sameorigin
-#   envVars:
-#   - key: REACT_APP_DEV_MODE
-#     value: false
-#   - key: REACT_APP_GRAPHQL_URL
-#     value: "https://api.coolapp.com/graphql"
-#   - key: REACT_APP_SERVER_URL
-#     value: "https://api.coolapp.com"
-
 - type: web
   name: coolapp-backend-prod
   env: docker
@@ -37,8 +11,6 @@ previewsExpireAfterDays: 1
   dockerContext: ./server
   domains:
     - api.coolapp.dev
-  # afterFirstDeployCommand: yarn db:seed
-  # healthCheckPath: /healthz
   envVars:
   - key: PORT
     value: 4000
