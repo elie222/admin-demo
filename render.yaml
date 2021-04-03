@@ -7,8 +7,8 @@ previewsExpireAfterDays: 1
   region: oregon
   plan: starter
   branch: master
-  dockerfilePath: ./server/Dockerfile
-  dockerContext: ./server
+  dockerfilePath: ./nest-app/Dockerfile
+  dockerContext: ./nest-app
   domains:
     - api.coolapp.dev
   envVars:
