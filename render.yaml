@@ -1,3 +1,4 @@
+services:
 - type: web
   name: coolapp-backend-prod
   env: docker
