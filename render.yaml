@@ -1,0 +1,74 @@
+previewsEnabled: true
+previewsExpireAfterDays: 1
+
+# services:
+# # production
+# - type: web
+#   name: coolapp-frontend-prod
+#   env: static
+#   branch: master
+#   buildCommand: cd client && yarn && yarn build
+#   staticPublishPath: ./client/build
+#   domains:
+#     - app.coolapp.com
+#   routes:
+#   - type: rewrite
+#     source: /*
+#     destination: /index.html
+#   headers:
+#   - path: /*
+#     name: X-Frame-Options
+#     value: sameorigin
+#   envVars:
+#   - key: REACT_APP_DEV_MODE
+#     value: false
+#   - key: REACT_APP_GRAPHQL_URL
+#     value: "https://api.coolapp.com/graphql"
+#   - key: REACT_APP_SERVER_URL
+#     value: "https://api.coolapp.com"
+
+- type: web
+  name: coolapp-backend-prod
+  env: docker
+  region: oregon
+  plan: starter
+  branch: master
+  dockerfilePath: ./server/Dockerfile
+  dockerContext: ./server
+  domains:
+    - api.coolapp.dev
+  # afterFirstDeployCommand: yarn db:seed
+  # healthCheckPath: /healthz
+  envVars:
+  - key: PORT
+    value: 4000
+  - key: EXAMPLE_GENERATE_SECRET
+    generateValue: true
+  - key: EXAMPLE_NO_SYNC
+    sync: false
+
+  - key: DB_HOST
+    fromDatabase:
+      name: coolapp-prod
+      property: host
+  - key: DB_PORT
+    fromDatabase:
+      name: coolapp-prod
+      property: port
+  - key: DB_USERNAME
+    fromDatabase:
+      name: coolapp-prod
+      property: user
+  - key: DB_PASSWORD
+    fromDatabase:
+      name: coolapp-prod
+      property: password
+  - key: DB_DATABASE_NAME
+    fromDatabase:
+      name: coolapp-prod
+      property: database
+
+databases:
+- name: coolapp-prod
+  databaseName: coolapp_production
+  user: coolapp_production_user
