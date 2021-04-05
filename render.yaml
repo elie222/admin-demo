@@ -7,7 +7,7 @@ services:
   env: docker
   region: oregon
   plan: starter
-  branch: master
+  branch: main
   dockerfilePath: ./nest-app/Dockerfile
   dockerContext: ./nest-app
   # domains:
